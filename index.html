@@ -19,10 +19,24 @@
     </header>
     <main class="container">
         <h1 class="page-title">To Do</h1>
+        <div>
+            <input class="form-add__input" type="text" placeholder="Введите задачу" />
+            <button class="form-add__button" type="button">Добавить</button>
+        </div>
+        <div class="toolbar">
+            <input class="toolbar_search" type="text" placeholder="Поиск задач..."/>
+            <div class="tabs toolbar_tabs">
+                <button class="tabs_item tabs_item--active" type="button">Все</button>
+                <button class="tabs_item" type="button">Активные</button>
+                <button class="tabs_ite" type="button">Завершенные</button>
+            </div>
+            <div>
+                <option selected>Сначала старые</option>
+                <option>Сначала новые</option>
+            </div>
+        </div>
     </main>
-    <div>
-        <input class="form-add__input" type="text" placeholder="Введите задачу" />
-        <button class="form-add__button" type="button">Добавить</button>
-    </div>
+
+    
 </body>
 </html>
