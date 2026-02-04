@@ -56,3 +56,33 @@ html, body{
     linear-gradient(#f6f3f9, #fbfaf8);
     background-attachment: fixed;
 }
+
+.task{
+    padding: 10px 12px;
+    border: 1 solid rgba(30, 10, 60, 0.25);
+    border-radius: 8px;
+    background: #fff;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.task_title{
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: #221c2a;
+}
+
+.task_meta{
+    font-size: 12px;
+    color: #8a8398
+}
+
+.task_actions{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
