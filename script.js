@@ -40,3 +40,15 @@ function taskSummar(total, done){
 
 console.log(taskSummar(5, 3));
 console.log(10, 4);
+
+
+// =======Урок: операторы и условия======= //
+
+
+let litle = ""
+if(title === ""){
+    console.log("Название задачи не указано")
+} else {
+    console.log("Задача:", title)
+}
+
