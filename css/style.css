@@ -126,3 +126,7 @@ tabs_item:active{
     color: #5e5472;
 }
 
+.input--error{
+    border-color: #cd6e6e;
+    box-shadow: 0 0 4px rgba(203, 110, 110, 0.3);
+}
