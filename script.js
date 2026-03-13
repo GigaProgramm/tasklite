@@ -381,3 +381,26 @@ function addTask(){
     input.value = '';
     renderAll();
 }
+
+let sortOrder = 'new';
+
+const sortSelect = document.querySelector('.toolbar_sort');
+
+sortSelect.addEventListener('change', () => {
+    const val = sortSelect.value();
+    if(val.includes('новые'))sortOrder = 'new';
+    else if(val.includes('старые')) sortOrder = 'old';
+    else if(val.includes('A-Z')) sortOreder = 'az'
+    else if(val.includes('Z-A')) sortOrder = 'za';
+    renderAll();
+});
+
+const sortedTask = [task].sort((a, b) => {
+    if(sortOrder === 'new') return b.id - a.id;
+    if(sortOrder === 'old') return a.id - b.id;
+    if(sortOrder === 'az') return a.text > b.text ? 1 : -1;
+    if(sortOrder === 'za') return a.text < b.text ? 1 : -1;
+    return a.id - b.id;
+});
+
+sortedTask.forEach(task => footer.before(renderTask(task)));
