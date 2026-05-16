@@ -130,3 +130,20 @@ tabs_item:active{
     border-color: #cd6e6e;
     box-shadow: 0 0 4px rgba(203, 110, 110, 0.3);
 }
+
+.task.kanban.dragging{
+    opacity: 0.6;
+    transform: scale(0.98);
+    cursor: grabbing;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.collumn.drag-over{
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0px 16px 32px 9px rgba(255, 255, 255, 0.2);
+    border-color: rgba(37, 99, 235, 0.3);
+    transition: box-shadow 0.2s, bacground 0.2s, border-color 0.2s;
+}
+.collumn.drag-over .collumn_header h2{
+    border-left-color: #2563eb;
+}

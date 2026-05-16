@@ -223,8 +223,8 @@ function renderTask(){
     }
 
     const editBtn = document.createElement('button')
-    editBtn.addEventListener('click'. () => {
-        const newTask = prompt('', task.text);
+    editBtn.addEventListener('click' () => {
+        const newTask1 = prompt('', task.text);
         if (newText && newText.trim !== ''){
             task.text = newText.trim();
             renderTask();
@@ -282,10 +282,10 @@ function renderTask(){
         <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
         </svg>`;
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.classList.add('task_actions', 'task_action--delete');
-    deleteBtn.title = 'Удалить';
-    deleteBtn.innerHTML = `<svg class="task__icon" viewBox="0 0 24 24" fill="none" stroke="#cb6e6e" stroke-width="2"
+    const deleteBtn1 = document.createElement('button');
+    deleteBtn1.classList.add('task_actions', 'task_action--delete');
+    deleteBtn1.title = 'Удалить';
+    deleteBtn1.innerHTML = `<svg class="task__icon" viewBox="0 0 24 24" fill="none" stroke="#cb6e6e" stroke-width="2"
         stroke-linecap="round" stroke-linejoin="round">
         <polyline points="3 6 5 6 21 6" />
         <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
@@ -324,6 +324,7 @@ item.addEventListener('click', (e) => {
     if(e.target.closest('.task_action')) return;
     // иначе переключаем статус (выполнено/невыполнено)
     task.done = !task.done;
+    saveTask();
     renderTask();
 })
 
@@ -377,6 +378,7 @@ function addTask(){
         done: false,
         date: 'создано сейчас'
     };
+    saveTask();
     task.push(newTask);
     input.value = '';
     renderAll();
@@ -384,10 +386,10 @@ function addTask(){
 
 let sortOrder = 'new';
 
-const sortSelect = document.querySelector('.toolbar_sort');
+const sortSelect1 = document.querySelector('.toolbar_sort');
 
-sortSelect.addEventListener('change', () => {
-    const val = sortSelect.value();
+sortSelect1.addEventListener('change', () => {
+    const val = sortSelect1.value();
     if(val.includes('новые'))sortOrder = 'new';
     else if(val.includes('старые')) sortOrder = 'old';
     else if(val.includes('A-Z')) sortOreder = 'az'
@@ -404,3 +406,28 @@ const sortedTask = [task].sort((a, b) => {
 });
 
 sortedTask.forEach(task => footer.before(renderTask(task)));
+
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+function saveTask(){
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function updateCounters(){
+    const total = tasks.length;
+    const active = tasks.filter(t => !t.done).length;
+    const done = task.filter(t => done).length;
+
+    clearButton.disabled = task.every(task => task.done);
+    const counters = docuents.querySelector('footer-control_counters');
+    if(counters){
+        counter.innerHTML = `
+        <span>"Всего: "${total}</span>
+        <span>"Активных: "${active}</span>
+        <span>"Выполенных: "${done}</span>
+        `;
+    }
+    filtered.forEach(task => footer.before(renderTask(task)));
+    updateCounters();
+}
+
